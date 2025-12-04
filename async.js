@@ -12,6 +12,6 @@ const fun1=async()=>{
     console.log("hi")
     await temp().then(res=>console.log(res))
     console.log("hello")
-    console.log("hi I am charan")
+    console.log("charan")
 }
 fun1()
