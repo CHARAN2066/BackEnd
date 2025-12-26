@@ -1,6 +1,5 @@
 import  mongoose, { Schema } from 'mongoose';
 
-
 const Traineesschema=new Schema({
         name:{
             type:String
