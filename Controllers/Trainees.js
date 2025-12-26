@@ -5,5 +5,11 @@ const addTrainee=async(req,res)=>{
     await Trainees.insertOne(myData);
     res.send("got the data")
 }
-export default addTrainee;
+
+const get_details=async(req,res)=>{
+    const id=req.params.id;
+    const data=await Trainees.findOne({name:id})
+    res.json(data);
+}
+export {addTrainee,get_details};
 
