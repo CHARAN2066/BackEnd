@@ -9,6 +9,10 @@ const Traineesschema=new Schema({
         },
         phNo:{
             type:Number
+        },
+        status:{
+            type:Boolean,
+            default:false
         }
 })
 
