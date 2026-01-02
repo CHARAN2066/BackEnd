@@ -1,5 +1,5 @@
 import express from 'express'
-import router from './Routers/TraineeRouter.js'
+import router from './Routers/ToDoRouter.js'
 import cors from 'cors'
 import mongoose from 'mongoose'
 
@@ -19,4 +19,3 @@ mongoose.connect('mongodb://127.0.0.1:27017/charan')
 app.listen(2000,()=>{
     console.log("server is running")
 })
-
