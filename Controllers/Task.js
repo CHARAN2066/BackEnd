@@ -1,39 +1,38 @@
-let Friends=[
+import taskModel from "../Models/TaskModel.js"
+
+const addData=async (req,res)=>{
+    const {username,password}=req.params
+    try
     {
-        "name":"Charan",
-        "roll":76
-    },
-    {
-        "name":"Varun",
-        "roll":7
+        await taskModel.create({username,password})
+        res.json("Result is pushed")
     }
-]
-
-const addData=(req,res)=>{
-    const {name,roll}=req.params
-    Friends.push({name,roll})
-    res.json("Result is pushed")
+    catch(err){
+        console.log(err)
+    }
 }
 
-const getData=(req,res)=>{
-    res.json(Friends);
+const getData=async(req,res)=>{
+    try{
+        const all_data=await taskModel.find({})
+        res.json(all_data);
+    }
+    catch(err){
+        console.log(err)
+    }
 }
 
-const updateData=(req,res)=>{
+const updateData=async (req,res)=>{
     const nid=req.params.id;
     const new_name=req.params.new_name;
-    Friends.forEach((ele,id)=>{
-        if(ele.roll==nid){
-            ele.name=new_name;
-        }   
-    })
+    await taskModel.findByIdAndUpdate(nid,{$set:{username:new_name}})
     res.json("updated")
 }
 
-const deleteData=(req,res)=>{
+const deleteData=async(req,res)=>{
     const did=req.params.id;
-    Friends=Friends.filter(ele=>ele.roll!=did)
+    await taskModel.findByIdAndDelete(did); 
     res.json("Deleted")
     
 }
-export {addData,getData,updateData,deleteData};
+export {addData,getData,deleteData,updateData};
